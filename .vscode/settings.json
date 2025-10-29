@@ -1,0 +1,8 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+"less.lint.unknownAtRules": "ignore",
+"pinegrow.urlWithPort": "http://localhost:3000",
+"pinegrow.enabled": true,
+"pinegrow.debug": true
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2b6f95"/>
+      <stop offset="1" stop-color="#6b2b95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" rx="18" fill="url(#g)" />
+  <g opacity="0.12" fill="#fff">
+    <rect x="40" y="40" width="360" height="200" rx="10" />
+    <rect x="420" y="40" width="720" height="200" rx="10" />
+  </g>
+  <text x="60" y="320" fill="#fff" font-size="36" font-family="Arial, Helvetica, sans-serif">AI‑Powered Productivity Chrome Extension</text>
+  <text x="60" y="370" fill="#fff" font-size="20" font-family="Arial, Helvetica, sans-serif" opacity="0.9">Demo thumbnail placeholder</text>
+</svg>
