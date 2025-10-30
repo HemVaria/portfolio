@@ -37,8 +37,6 @@ const itemVariants = {
 export default function Hero() {
   return (
     <section className="relative isolate z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 text-center md:px-8 pt-28 md:pt-36">
-      {/* Top glow ribbon */}
-      <div className="pointer-events-none absolute inset-x-0 -top-44 mx-auto h-64 w-[min(900px,90vw)] rounded-full bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--color-primary)_28%,transparent)_0%,transparent_60%)] blur-2xl" />
 
       <motion.h1
         className="relative text-white text-center font-ios"
