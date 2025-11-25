@@ -158,7 +158,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ## 🔗 Links
 
-- **Portfolio**: [hemvaria.dev](https://hemvaria.dev)
+- **Portfolio**: [hehehem.vercel.app](https://hehehem.vercel.app)
 - **GitHub**: [@HemVaria](https://github.com/HemVaria)
 - **LinkedIn**: [Hem Varia](https://linkedin.com/in/hemvaria)
 - **Email**: hemvaria007@gmail.com
