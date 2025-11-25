@@ -4,6 +4,8 @@ import { Geist, Geist_Mono, Newsreader, Poppins } from "next/font/google"
 import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
+import SmoothScroll from "@/components/smooth-scroll"
+import CustomCursor from "@/components/custom-cursor"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -36,8 +38,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`font-sans antialiased ${_display.variable} ${_hero.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {children}
-          <Analytics />
+          <SmoothScroll>
+            <CustomCursor />
+            {children}
+            <Analytics />
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>

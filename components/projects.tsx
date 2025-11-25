@@ -1,5 +1,7 @@
 
-import BentoItem from "./ui/bento-item"
+import ScrollReveal from "./ui/scroll-reveal"
+import MagneticButton from "./ui/magnetic-button"
+
 type Project = {
   title: string
   year: string
@@ -99,7 +101,8 @@ export default function Projects() {
             .join(" ")
 
           return (
-            <BentoItem key={p.title} className={spanClasses}>
+            <ScrollReveal key={p.title} className={spanClasses} delay={0.1}>
+
               <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-[box-shadow,background] duration-200">
                 {/* Header: title, year, and GitHub button */}
                 <header className="flex items-start justify-between gap-4">
@@ -109,15 +112,17 @@ export default function Projects() {
                   </div>
                   {p.repo && (
                     <div className="flex items-center gap-2">
-                      <a
-                        href={p.repo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white/90 hover:text-white inline-flex items-center gap-2 rounded-md border border-white/5 px-2 py-1 text-xs"
-                        aria-label={`View ${p.title} repository`}
-                      >
-                        GitHub
-                      </a>
+                      <MagneticButton>
+                        <a
+                          href={p.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white/90 hover:text-white inline-flex items-center gap-2 rounded-md border border-white/5 px-2 py-1 text-xs"
+                          aria-label={`View ${p.title} repository`}
+                        >
+                          GitHub
+                        </a>
+                      </MagneticButton>
                     </div>
                   )}
                 </header>
@@ -158,7 +163,8 @@ export default function Projects() {
                   ))}
                 </div>
               </article>
-            </BentoItem>
+            </ScrollReveal>
+
           )
         })}
       </div>
