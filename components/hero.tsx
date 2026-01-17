@@ -113,7 +113,7 @@ export default function Hero() {
                 src="/images/design-mode/497194244_18163154437353224_7281199870403729748_n.jpg"
                 alt="Hem Varia"
                 fill
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="object-cover md:grayscale md:group-hover:grayscale-0 transition-all duration-700"
                 priority
               />
             </div>
