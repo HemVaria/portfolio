@@ -1,39 +1,73 @@
+"use client"
+
+import { motion } from "framer-motion"
+import Image from "next/image"
+import { Download } from "lucide-react"
+
 export default function About() {
   return (
-    <div className="mx-auto max-w-4xl px-6 py-24 md:py-32">
-  <h2 className="text-3xl md:text-4xl font-semibold text-white font-display uppercase tracking-wider">About</h2>
-      <div className="mt-6 space-y-5 text-white/80 leading-relaxed">
-        <p>
-          I’m Hem Varia — a full‑stack and AI/ML developer focused on building fast, accessible apps with a clean,
-          modern UX. I bring a product mindset to every project: ship quickly, measure what matters, and iterate with
-          intent.
-        </p>
-        <p>
-          I’ve built 10+ apps and delivered client work across Fiverr and Upwork. I’m comfortable owning the full
-          lifecycle — from clarifying the brief and shaping scope, to architecture, implementation, and smooth handoffs
-          with clear docs.
-        </p>
-        <p>
-          My web stack centers on Next.js (App Router), React, TypeScript, Tailwind, and shadcn/ui — backed by Supabase
-          or Firebase, with PostgreSQL/Prisma where needed, and deployed on Vercel. On the AI/ML side I prototype and
-          ship with TensorFlow and OpenCV, and integrate Whisper, YOLOv8, BLIP, and Gemini APIs when they’re the right
-          fit. I also use n8n for pragmatic automation when it accelerates outcomes.
-        </p>
-        <p>
-          I care about pragmatic engineering that scales: solid design systems, consistent components, performance
-          budgets, accessibility (WCAG 2.1), SEO fundamentals, and light‑touch analytics/observability so teams can make
-          informed decisions.
-        </p>
-        <p>
-          Recent work includes an AI Multimodal Video Captioning Tool, a Generative AI Creative Studio (Nano‑Craft), an
-          AI Waste Classifier with maps and gamification, and an automated content pipeline powered by n8n. I’ve also
-          participated in hackathons and was a Smart India Hackathon 2025 Nationals Finalist.
-        </p>
-        <p>
-          If you’re building something ambitious and care about performance, accessibility, and thoughtful automation,
-          I’d love to help bring it to life.
-        </p>
+    <section className="bg-black py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative aspect-[4/5] rounded-2xl overflow-hidden"
+          >
+            <Image
+              src="/images/design-mode/497194244_18163154437353224_7281199870403729748_n.jpg"
+              alt="Hem Varia"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+
+          {/* Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-2xl md:text-3xl text-white/90 leading-relaxed font-medium">
+              I'm a software engineer focused on turning ideas into clean, intuitive digital experiences.
+            </p>
+
+            <div className="mt-6 text-sm text-white/40 uppercase tracking-wider">
+              (ABOUT ME)
+            </div>
+
+            <div className="mt-6 space-y-4 text-white/70 leading-relaxed">
+              <p>
+                I am a dedicated Software Engineer with a knack for building full-stack web applications 
+                using modern technologies like Next.js and Tailwind CSS. My journey in tech began with a 
+                curiosity for solving real-world problems through innovative solutions.
+              </p>
+              <p>
+                Beyond coding, I thrive in collaborative environments and enjoy tackling challenging 
+                problems with creative solutions. I aim to contribute to impactful projects that make 
+                a difference in users' lives.
+              </p>
+            </div>
+
+            {/* Download CV Button */}
+            <motion.a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white rounded-full hover:bg-white hover:text-black transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Download className="size-4" />
+              Download CV
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

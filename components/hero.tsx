@@ -1,140 +1,153 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Linkedin, Mail, Download } from "lucide-react"
-import Link from "next/link"
+import { ArrowUpRight, Download } from "lucide-react"
 import Image from "next/image"
 
-const socials = [
-  { href: "https://github.com/HemVaria", label: "GitHub", Icon: Github },
-  { href: "https://linkedin.com/in/hem-varia", label: "LinkedIn", Icon: Linkedin },
-  { href: "mailto:hemvaria007@gmail.com", label: "Email", Icon: Mail },
-]
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-    },
-  },
-}
-
 export default function Hero() {
+  // Animation variants for staggered text reveal
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  }
+
+  const letterVariants = {
+    hidden: { y: 100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  }
+
   return (
-    <section className="relative isolate z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 text-center md:px-8 pt-28 md:pt-36">
-
-      <motion.h1
-        className="relative text-white text-center font-ios"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Greeting line 1 */}
-        <motion.div
-          variants={itemVariants}
-          className="drop-shadow-[0_6px_24px_rgba(0,0,0,0.45)] text-[clamp(2rem,7vw,5rem)] tracking-[0.005em] leading-[1.06] font-semibold"
-        >
-          <span aria-hidden>👋✨ </span>
-          <em className="italic">Hey, I'm</em>
-        </motion.div>
-
-        {/* Greeting line 2 */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-1 md:mt-2 drop-shadow-[0_6px_24px_rgba(0,0,0,0.45)] text-[clamp(2.25rem,7.5vw,5.5rem)] tracking-[0.005em] leading-[1.06] font-bold"
-        >
-          <em className="italic">Hem Varia</em> <span aria-hidden>👾</span>
-        </motion.div>
-
-        {/* Avatar + Role row */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-6 md:mt-8 flex items-center justify-center gap-3 md:gap-4"
-        >
-          <span className="inline-flex items-center justify-center rounded-full p-1 bg-white/5 border border-white/10 backdrop-blur-md shadow-lg">
-            <Image
-              src="/images/design-mode/497194244_18163154437353224_7281199870403729748_n.jpg"
-              alt="Hem Varia avatar"
-              width={60}
-              height={60}
-              className="inline-block size-12 md:size-[3.75rem] rounded-full border border-white/10"
-            />
-          </span>
-          <div className="text-left font-ios">
-            <div className="text-white/90 tracking-[0.01em] text-[clamp(0.9rem,1.4vw,1.1rem)] md:text-[clamp(1rem,1.6vw,1.2rem)] font-semibold italic leading-[1.15]">
-              <span aria-hidden className="mr-1">💻</span>
-              <span>FULL STACK CREATOR</span>
-              <span aria-hidden className="ml-1">🛠️</span>
+    <section className="relative min-h-screen bg-[#f5f5f0]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+        {/* Left content */}
+        <div className="flex flex-col justify-center px-6 md:px-12 lg:px-16 py-24 lg:py-0">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Name - Large with text reveal animation */}
+            <div className="overflow-hidden">
+              <motion.h1 
+                className="text-[clamp(4rem,14vw,10rem)] font-bold text-black leading-[0.85] tracking-tighter"
+                variants={letterVariants}
+              >
+                HEM
+              </motion.h1>
             </div>
-            <div className="text-white/90 tracking-[0.01em] text-[clamp(0.9rem,1.4vw,1.1rem)] md:text-[clamp(1rem,1.6vw,1.2rem)] font-semibold italic leading-[1.15]">
-              <span aria-hidden className="mr-1">🤖</span>
-              <span>AI / ML</span>
-              <span aria-hidden className="ml-1">🧠</span>
+            <div className="overflow-hidden">
+              <motion.h1 
+                className="text-[clamp(4rem,14vw,10rem)] font-bold text-black leading-[0.85] tracking-tighter"
+                variants={letterVariants}
+              >
+                VARIA
+              </motion.h1>
             </div>
+
+            {/* Tagline */}
+            <motion.p 
+              className="mt-8 text-black/70 text-lg max-w-md leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Full-Stack Developer & Designer. Turning ideas into polished digital solutions.
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div 
+              className="mt-8 flex flex-wrap items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <motion.a
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-black/80 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                CONTACT
+                <ArrowUpRight className="size-4" />
+              </motion.a>
+              
+              <motion.a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-transparent text-black px-6 py-3 rounded-full font-medium border-2 border-black hover:bg-black hover:text-white transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Download className="size-4" />
+                DOWNLOAD CV
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Right image with frame - shifted more to the left */}
+        <motion.div
+          className="relative flex items-center justify-start lg:justify-center p-8 lg:p-12 lg:-ml-16"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="relative w-full max-w-[500px] aspect-[3/4]">
+            {/* Framed Image */}
+            <div className="relative w-full h-full border-4 border-black shadow-[8px_8px_0px_#000] hover:shadow-[12px_12px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-500 overflow-hidden group">
+              <Image
+                src="/images/design-mode/497194244_18163154437353224_7281199870403729748_n.jpg"
+                alt="Hem Varia"
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                priority
+              />
+            </div>
+
+            {/* Available badge */}
+            <motion.div 
+              className="absolute -top-3 -left-3 flex items-center gap-2 bg-white px-4 py-2 shadow-lg"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </span>
+              <span className="text-xs font-medium text-black uppercase tracking-wide">Available</span>
+            </motion.div>
           </div>
         </motion.div>
-      </motion.h1>
+      </div>
 
-      <motion.p
-        className="hero-bio mt-7 max-w-3xl text-[clamp(1rem,1.5vw,1.125rem)] leading-relaxed text-white font-ios tracking-[-0.01em]"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
+      {/* Scroll indicator */}
+      <motion.div 
+        className="absolute bottom-8 left-6 md:left-12 lg:left-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
       >
-        I craft fast, accessible web apps and practical AI workflows. I enjoy
-        turning complex ideas into intuitive experiences—shipping for brands and
-        startups, and building my own tools along the way.
-      </motion.p>
-
-      <motion.div
-        className="hero-social mt-8 flex flex-wrap items-center justify-center gap-3"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        {/* Download CV (primary) */}
-        <a
-          href="/Hem-Varia-ONEPAGECV.pdf"
-          download
-          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white backdrop-blur-md transition-colors hover:bg-white/[0.14] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-        >
-          <Download className="size-4" aria-hidden />
-          <span>Download CV</span>
-        </a>
-        {/* View CV (opens in new tab) */}
-        <a
-          href="/Hem-Varia-ONEPAGECV.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-white backdrop-blur-md transition-colors hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-        >
-          <span>View CV</span>
-        </a>
-        {socials.map(({ href, label, Icon }) => (
-          <Link
-            key={href}
-            href={href}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-white backdrop-blur-md transition-colors hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-          >
-            <Icon className="size-4" aria-hidden />
-            <span>{label}</span>
-          </Link>
-        ))}
+        <div className="flex items-center gap-2 text-black/50">
+          <svg className="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+          <span className="text-xs uppercase tracking-wider">Scroll</span>
+        </div>
       </motion.div>
     </section>
   )

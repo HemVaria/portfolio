@@ -13,13 +13,19 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
         if (isMobile || window.innerWidth < 768) return
 
         const lenis = new Lenis({
-            duration: 1.2,
+            duration: 1.5,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 2,
+            wheelMultiplier: 0.8,
+            touchMultiplier: 1.5,
+            infinite: false,
+        })
+
+        // Connect lenis to scroll events
+        lenis.on('scroll', () => {
+            // This syncs with any scroll-based animations
         })
 
         function raf(time: number) {
@@ -28,6 +34,20 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
         }
 
         requestAnimationFrame(raf)
+
+        // Handle anchor links smoothly
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault()
+                const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href')
+                if (href && href !== '#') {
+                    const target = document.querySelector(href)
+                    if (target) {
+                        lenis.scrollTo(target as HTMLElement, { offset: -80 })
+                    }
+                }
+            })
+        })
 
         return () => {
             lenis.destroy()
