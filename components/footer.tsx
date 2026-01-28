@@ -14,7 +14,7 @@ const menuLinks = [
 const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/hem-varia" },
   { label: "GitHub", href: "https://github.com/HemVaria" },
-  { label: "Instagram", href: "https://instagram.com/hemvaria" },
+  { label: "Instagram", href: "https://instagram.com/hem_007_" },
 ]
 
 export default function Footer() {
@@ -101,7 +101,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-black/40">
-             {new Date().getFullYear()} Hem Varia. All rights reserved.
+            {new Date().getFullYear()} Hem Varia. All rights reserved.
           </p>
         </div>
       </div>
