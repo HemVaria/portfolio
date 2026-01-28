@@ -1,12 +1,12 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { ArrowUpRight, Download } from "lucide-react"
 import Image from "next/image"
 
 export default function Hero() {
   // Animation variants for staggered text reveal
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -17,7 +17,7 @@ export default function Hero() {
     },
   }
 
-  const letterVariants = {
+  const letterVariants: Variants = {
     hidden: { y: 100, opacity: 0 },
     visible: {
       y: 0,
@@ -41,7 +41,7 @@ export default function Hero() {
           >
             {/* Name - Large with text reveal animation */}
             <div className="overflow-hidden">
-              <motion.h1 
+              <motion.h1
                 className="text-[clamp(4rem,14vw,10rem)] font-bold text-black leading-[0.85] tracking-tighter"
                 variants={letterVariants}
               >
@@ -49,7 +49,7 @@ export default function Hero() {
               </motion.h1>
             </div>
             <div className="overflow-hidden">
-              <motion.h1 
+              <motion.h1
                 className="text-[clamp(4rem,14vw,10rem)] font-bold text-black leading-[0.85] tracking-tighter"
                 variants={letterVariants}
               >
@@ -58,7 +58,7 @@ export default function Hero() {
             </div>
 
             {/* Tagline */}
-            <motion.p 
+            <motion.p
               className="mt-8 text-black/70 text-lg max-w-md leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export default function Hero() {
             </motion.p>
 
             {/* Buttons */}
-            <motion.div 
+            <motion.div
               className="mt-8 flex flex-wrap items-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function Hero() {
                 CONTACT
                 <ArrowUpRight className="size-4" />
               </motion.a>
-              
+
               <motion.a
                 href="/resume.pdf"
                 target="_blank"
@@ -119,7 +119,7 @@ export default function Hero() {
             </div>
 
             {/* Available badge */}
-            <motion.div 
+            <motion.div
               className="absolute -top-3 -left-3 flex items-center gap-2 bg-white px-4 py-2 shadow-lg"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -136,7 +136,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-8 left-6 md:left-12 lg:left-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

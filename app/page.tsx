@@ -5,6 +5,7 @@ import Hero from "@/components/hero"
 import Services from "@/components/services"
 import Projects from "@/components/projects"
 import Skills from "@/components/skills"
+import Experience from "@/components/experience"
 import About from "@/components/about"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
@@ -14,35 +15,40 @@ export default function HomePage() {
     <main className="relative">
       {/* Fixed Navigation */}
       <Navigation />
-      
+
       {/* Hero Section */}
       <Hero />
-      
+
       {/* Services Section */}
       <section id="services">
         <Services />
       </section>
-      
+
       {/* Projects Section */}
       <section id="projects">
         <Projects />
       </section>
-      
+
       {/* Skills Section */}
       <section id="skills">
         <Skills />
       </section>
-      
+
+      {/* Experience Section */}
+      <section id="experience">
+        <Experience />
+      </section>
+
       {/* About Section */}
       <section id="about">
         <About />
       </section>
-      
+
       {/* Contact Section */}
       <section id="contact">
         <Contact />
       </section>
-      
+
       {/* Footer */}
       <Footer />
     </main>
