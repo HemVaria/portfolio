@@ -118,28 +118,28 @@ export default function Experience() {
   const [expandedLinkedIn, setExpandedLinkedIn] = useState<string | null>(null)
 
   return (
-    <section className="bg-black py-20 lg:py-32 overflow-hidden">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section className="bg-black py-16 sm:py-20 lg:py-32 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Experience Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-10 sm:mb-16"
         >
-          <Badge className="mb-4 bg-blue-500/20 text-blue-300 border-blue-500/30 hover:bg-blue-500/30">
+          <Badge className="mb-3 sm:mb-4 bg-blue-500/20 text-blue-300 border-blue-500/30 hover:bg-blue-500/30">
             Experience
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4">
             Where I&apos;ve Made an Impact
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl">
+          <p className="text-sm sm:text-base lg:text-lg text-white/60 max-w-2xl">
             Building products, shipping features, and creating meaningful experiences across startups and freelance projects.
           </p>
         </motion.div>
 
         {/* Experience Carousel */}
-        <div className="w-full max-w-6xl mx-auto px-8">
+        <div className="w-full max-w-6xl mx-auto px-2 sm:px-8">
           <Carousel
             opts={{
               align: "start",
@@ -156,8 +156,8 @@ export default function Experience() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                     className={`h-full rounded-2xl border backdrop-blur-md transition-all duration-300 overflow-hidden group ${exp.highlight
-                        ? "bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/30 hover:border-blue-400/50"
-                        : "bg-white/[0.03] border-white/[0.08] hover:border-white/20"
+                      ? "bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/30 hover:border-blue-400/50"
+                      : "bg-white/[0.03] border-white/[0.08] hover:border-white/20"
                       }`}
                   >
                     {/* Image */}

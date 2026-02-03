@@ -44,17 +44,17 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#f5f5f0] border-t border-black/10">
-      <div className="mx-auto max-w-6xl px-6 md:px-12 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-12 py-10 sm:py-12 pb-24 sm:pb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Menu */}
           <div>
-            <h3 className="text-sm font-medium text-black/40 uppercase tracking-wider mb-4">Menu</h3>
-            <nav className="flex flex-col gap-2">
+            <h3 className="text-xs sm:text-sm font-medium text-black/40 uppercase tracking-wider mb-3 sm:mb-4">Menu</h3>
+            <nav className="flex flex-col gap-1.5 sm:gap-2">
               {menuLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-black/70 hover:text-black transition-colors"
+                  className="text-sm sm:text-base text-black/70 hover:text-black transition-colors"
                 >
                   {link.label}
                 </a>
@@ -64,15 +64,15 @@ export default function Footer() {
 
           {/* Socials */}
           <div>
-            <h3 className="text-sm font-medium text-black/40 uppercase tracking-wider mb-4">Socials</h3>
-            <nav className="flex flex-col gap-2">
+            <h3 className="text-xs sm:text-sm font-medium text-black/40 uppercase tracking-wider mb-3 sm:mb-4">Socials</h3>
+            <nav className="flex flex-col gap-1.5 sm:gap-2">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-black/70 hover:text-black transition-colors"
+                  className="text-sm sm:text-base text-black/70 hover:text-black transition-colors"
                 >
                   {link.label}
                 </a>
@@ -82,18 +82,18 @@ export default function Footer() {
 
           {/* Local Time */}
           <div>
-            <h3 className="text-sm font-medium text-black/40 uppercase tracking-wider mb-4">Local Time</h3>
-            <p className="text-black/70 font-mono text-sm">{time}</p>
+            <h3 className="text-xs sm:text-sm font-medium text-black/40 uppercase tracking-wider mb-3 sm:mb-4">Local Time</h3>
+            <p className="text-black/70 font-mono text-xs sm:text-sm">{time}</p>
           </div>
 
           {/* Back to top */}
-          <div className="flex justify-end">
+          <div className="flex justify-end items-start">
             <button
               onClick={scrollToTop}
-              className="group flex items-center justify-center w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-black hover:text-white transition-colors"
+              className="group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-black/10 bg-white hover:bg-black hover:text-white transition-colors"
               aria-label="Scroll to top"
             >
-              <ArrowUp className="size-5 text-black/70 group-hover:text-white transition-colors" />
+              <ArrowUp className="size-4 sm:size-5 text-black/70 group-hover:text-white transition-colors" />
             </button>
           </div>
         </div>

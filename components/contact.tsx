@@ -7,11 +7,11 @@ import Image from "next/image"
 import { getCalApi } from "@calcom/embed-react"
 
 // Twitter/X Card Component
-function TwitterCard({ 
-  content, 
-  date, 
-  likes, 
-  retweets, 
+function TwitterCard({
+  content,
+  date,
+  likes,
+  retweets,
   className = "",
   style = {}
 }: {
@@ -32,8 +32,8 @@ function TwitterCard({
       <div className="flex items-start gap-3 mb-3">
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 via-yellow-400 to-green-500 p-0.5 flex-shrink-0">
           <div className="w-full h-full rounded-full bg-black overflow-hidden">
-            <Image 
-              src="/images/design-mode/497194244_18163154437353224_7281199870403729748_n.jpg" 
+            <Image
+              src="/images/design-mode/497194244_18163154437353224_7281199870403729748_n.jpg"
               alt="Hem Varia"
               width={40}
               height={40}
@@ -100,7 +100,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Format WhatsApp message
     const whatsappMessage = `Portfolio Contact
 
@@ -112,13 +112,13 @@ ${formData.message}
 
 ---
 Sent from portfolio`
-    
+
     // Encode message for URL
     const encodedMessage = encodeURIComponent(whatsappMessage)
-    
+
     // Your WhatsApp number (India: +91)
     const phoneNumber = "918200487838"
-    
+
     // Redirect to WhatsApp
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank")
   }
@@ -145,26 +145,26 @@ Sent from portfolio`
   ]
 
   return (
-    <section className="bg-[#f5f5f0] py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <section className="bg-[#f5f5f0] py-20 sm:py-24 md:py-32 pb-28 sm:pb-24 md:pb-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
         {/* Top Section - Title + Cards */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-16 mb-20">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 sm:gap-16 mb-12 sm:mb-20">
           {/* Left - Big Title */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-[clamp(3rem,10vw,8rem)] font-bold text-black leading-[0.9] tracking-tight">
+            <h2 className="text-[clamp(2.5rem,10vw,8rem)] font-bold text-black leading-[0.9] tracking-tight">
               LET&apos;S<br />
               MAKE IT<br />
               <span className="text-[#ff6b35]">HAPPEN</span>
             </h2>
           </motion.div>
 
-          {/* Right - Stacked Twitter Cards */}
+          {/* Right - Stacked Twitter Cards - Hidden on small mobile */}
           <motion.div
-            className="relative w-full lg:w-auto h-[280px] flex justify-center lg:justify-end"
+            className="relative w-full lg:w-auto h-[280px] hidden sm:flex justify-center lg:justify-end"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -186,7 +186,7 @@ Sent from portfolio`
         </div>
 
         {/* Bottom Section - Form + Contact Info */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
           {/* Left - Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

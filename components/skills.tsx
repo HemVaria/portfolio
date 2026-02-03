@@ -42,21 +42,21 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section className="bg-black py-24 md:py-32 overflow-hidden">
-      <div className="mx-auto max-w-6xl px-6 md:px-12">
+    <section className="bg-black py-20 sm:py-24 md:py-32 overflow-hidden">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-12">
         {/* Section Header */}
         <motion.div
-          className="mb-16"
+          className="mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Tech Stack</h2>
-          <p className="text-white/50 max-w-xl">Technologies and tools I use to bring ideas to life.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">Tech Stack</h2>
+          <p className="text-sm sm:text-base text-white/50 max-w-xl">Technologies and tools I use to bring ideas to life.</p>
         </motion.div>
 
         {/* Skill categories */}
-        <div className="space-y-16">
+        <div className="space-y-10 sm:space-y-16">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.title}

@@ -251,12 +251,12 @@ export default function Navigation() {
 
             {/* Mobile Bottom Navigation Bar */}
             <motion.nav
-                className="fixed bottom-4 left-4 right-4 z-[99] md:hidden"
+                className="fixed bottom-3 left-3 right-3 z-[99] md:hidden"
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: hidden ? 100 : 0, opacity: hidden ? 0 : 1 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-                <div className="flex items-center justify-around bg-black/90 backdrop-blur-xl rounded-2xl border border-white/10 px-2 py-3 shadow-xl shadow-black/50">
+                <div className="flex items-center justify-evenly bg-black/90 backdrop-blur-xl rounded-2xl border border-white/10 px-1 py-2.5 shadow-xl shadow-black/50">
                     {[
                         { icon: Home, href: "#", label: "Home" },
                         { icon: Layers, href: "#projects", label: "Works" },
@@ -270,13 +270,13 @@ export default function Navigation() {
                             <a
                                 key={item.label}
                                 href={item.href}
-                                className={`flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl transition-all ${isActive
+                                className={`flex flex-col items-center justify-center gap-0.5 min-w-[48px] px-2 py-1.5 rounded-xl transition-all ${isActive
                                     ? "text-black bg-white"
                                     : "text-white/50 hover:text-white"
                                     }`}
                             >
-                                <Icon className="w-5 h-5" />
-                                <span className="text-[10px] font-medium">{item.label}</span>
+                                <Icon className="w-4 h-4 flex-shrink-0" />
+                                <span className="text-[9px] font-medium leading-tight">{item.label}</span>
                             </a>
                         )
                     })}
@@ -329,14 +329,14 @@ export default function Navigation() {
                             </div>
 
                             {/* Navigation Links */}
-                            <nav className="flex-1 flex flex-col justify-center px-6 sm:px-10 md:px-16 lg:px-24">
+                            <nav className="flex-1 flex flex-col justify-center px-4 sm:px-10 md:px-16 lg:px-24 overflow-y-auto">
                                 {mobileNavLinks.map((link, i) => {
                                     const Icon = link.icon
                                     return (
                                         <motion.a
                                             key={link.label}
                                             href={link.href}
-                                            className="group flex items-center gap-4 sm:gap-6 py-3 sm:py-4 border-b border-white/10 last:border-0"
+                                            className="group flex items-center gap-3 sm:gap-6 py-2.5 sm:py-4 border-b border-white/10 last:border-0"
                                             initial={{ opacity: 0, x: 50 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: 50 }}
@@ -348,13 +348,13 @@ export default function Navigation() {
                                             }}
                                             onClick={closeMenu}
                                         >
-                                            <span className="flex items-center justify-center w-10 h-10 rounded-xl border border-white/10 group-hover:bg-white group-hover:text-black transition-all">
-                                                <Icon className="w-5 h-5 text-white/40 group-hover:text-black transition-colors" />
+                                            <span className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-white/10 group-hover:bg-white group-hover:text-black transition-all flex-shrink-0">
+                                                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/40 group-hover:text-black transition-colors" />
                                             </span>
-                                            <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white/70 group-hover:text-white transition-all group-hover:translate-x-2">
+                                            <span className="text-xl sm:text-3xl md:text-4xl font-bold text-white/70 group-hover:text-white transition-all group-hover:translate-x-2">
                                                 {link.label}
                                             </span>
-                                            <span className="ml-auto text-xs text-white/20 font-mono">{link.index}</span>
+                                            <span className="ml-auto text-[10px] sm:text-xs text-white/20 font-mono flex-shrink-0">{link.index}</span>
                                         </motion.a>
                                     )
                                 })}
