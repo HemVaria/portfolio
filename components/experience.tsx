@@ -1,15 +1,6 @@
 "use client"
 
-import { useState } from "react"
 import { Linkedin, ExternalLink, Briefcase, Award, Calendar, MapPin } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
 import { motion } from "framer-motion"
 
 interface ExperienceItem {
@@ -19,9 +10,8 @@ interface ExperienceItem {
   period: string
   location?: string
   points: string[]
-  highlight?: boolean
   linkedinPost?: string
-  image?: string
+  techStack: string[]
 }
 
 interface ActivityItem {
@@ -43,9 +33,8 @@ const experiences: ExperienceItem[] = [
       "Built with Next.js/Node.js with integrated Gen AI APIs",
       "Designed n8n workflows for image processing and automation",
     ],
-    highlight: true,
     linkedinPost: "https://www.linkedin.com/posts/hem-varia_having-rented-5-houses-in-my-life-so-far-activity-7421918803296501762-3Kho",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=400&fit=crop",
+    techStack: ["Next.js", "Node.js", "n8n", "Gemini AI", "Supabase"],
   },
   {
     title: "Full-Stack Developer + Gen AI",
@@ -57,7 +46,7 @@ const experiences: ExperienceItem[] = [
       "Implemented AI-driven agentic workflows with third-party API integrations",
       "Connected backend services for end-to-end feature delivery",
     ],
-    image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&h=400&fit=crop",
+    techStack: ["React", "Next.js", "TypeScript", "REST APIs", "Tailwind CSS"],
   },
   {
     title: "Freelance Web Developer",
@@ -68,7 +57,7 @@ const experiences: ExperienceItem[] = [
       "Implemented GSAP animations and Three.js 3D visualizations",
       "Enhanced performance with robust authentication and cloud optimization",
     ],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+    techStack: ["Node.js", "Supabase", "Firebase", "GSAP", "Three.js"],
   },
   {
     title: "Freelance Web Designer",
@@ -79,7 +68,7 @@ const experiences: ExperienceItem[] = [
       "Designed with Figma UI/UX and Canva assets",
       "Delivered client projects on Fiverr/Upwork",
     ],
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop",
+    techStack: ["Figma", "Next.js", "React", "Tailwind CSS", "Canva"],
   },
   {
     title: "AI/ML Developer",
@@ -90,7 +79,7 @@ const experiences: ExperienceItem[] = [
       "Built AI WhatsApp Chatbot and n8n automation workflows",
       "Improved operational efficiency through intelligent automation",
     ],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
+    techStack: ["Python", "TensorFlow", "HuggingFace", "n8n", "OpenAI"],
   },
 ]
 
@@ -103,7 +92,7 @@ const activities: ActivityItem[] = [
   },
   {
     title: "PropTech Connect Dubai 2026",
-    description: "Contributed to platform development featured at the conference",
+    description: "Contributed to platform development featured at the international conference",
     linkedinPost: "https://www.linkedin.com/posts/hem-varia_having-rented-5-houses-in-my-life-so-far-activity-7421918803296501762-3Kho",
     icon: "award",
   },
@@ -115,138 +104,310 @@ const activities: ActivityItem[] = [
 ]
 
 export default function Experience() {
-  const [expandedLinkedIn, setExpandedLinkedIn] = useState<string | null>(null)
-
   return (
-    <section className="bg-black py-16 sm:py-20 lg:py-32 overflow-hidden">
+    <section id="experience" className="bg-black py-16 sm:py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Experience Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 sm:mb-16"
+          className="mb-10 sm:mb-24 text-center"
         >
-          <Badge className="mb-3 sm:mb-4 bg-blue-500/20 text-blue-300 border-blue-500/30 hover:bg-blue-500/30">
-            Experience
-          </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4">
+          <p className="text-white/30 text-sm font-mono mb-3">experience</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Where I&apos;ve Made an Impact
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-white/60 max-w-2xl">
-            Building products, shipping features, and creating meaningful experiences across startups and freelance projects.
-          </p>
         </motion.div>
 
-        {/* Experience Carousel */}
-        <div className="w-full max-w-6xl mx-auto px-2 sm:px-8">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
+        {/* Mobile: Horizontal Scroll Snap */}
+        <div className="sm:hidden -mx-4 px-4">
+          {/* Swipe tip */}
+          <p className="text-white/20 text-xs text-center mb-4 flex items-center justify-center gap-2">
+            <span>←</span>
+            <span>Swipe to explore</span>
+            <span>→</span>
+          </p>
+
+          <div
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            <CarouselContent className="-ml-4">
-              {experiences.map((exp, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/2">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className={`h-full rounded-2xl border backdrop-blur-md transition-all duration-300 overflow-hidden group ${exp.highlight
-                      ? "bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/30 hover:border-blue-400/50"
-                      : "bg-white/[0.03] border-white/[0.08] hover:border-white/20"
-                      }`}
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="flex-shrink-0 w-[85vw] snap-center"
+              >
+                <div
+                  className="p-5 rounded-2xl h-full
+                    bg-white/[0.03] backdrop-blur-xl
+                    border border-white/[0.08]"
+                >
+                  {/* Type */}
+                  {exp.type && (
+                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest">
+                      {exp.type}
+                    </span>
+                  )}
+
+                  {/* Title & Company */}
+                  <h3 className="text-lg font-semibold text-white mt-1">
+                    {exp.title}
+                  </h3>
+                  <p className="text-white/50 text-sm">{exp.company}</p>
+
+                  {/* Meta */}
+                  <div className="flex flex-wrap items-center gap-3 mt-3 text-xs text-white/30">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="w-3 h-3" />
+                      {exp.period}
+                    </span>
+                    {exp.location && (
+                      <span className="flex items-center gap-1.5">
+                        <MapPin className="w-3 h-3" />
+                        {exp.location}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Points */}
+                  <ul className="space-y-1.5 mt-4">
+                    {exp.points.map((point, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-white/50">
+                        <span className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-1.5 mt-4">
+                    {exp.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 text-[10px] font-medium rounded-full 
+                          bg-white/[0.03] text-white/50 border border-white/[0.06]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Link */}
+                  {exp.linkedinPost && (
+                    <a
+                      href={exp.linkedinPost}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-4 text-xs text-white/30"
+                    >
+                      <Linkedin className="w-3.5 h-3.5" />
+                      View Post
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          {/* Scroll indicator */}
+          <div className="flex justify-center gap-1.5 mt-4">
+            {experiences.map((_, i) => (
+              <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/20" />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Vertical Timeline */}
+        <div className="hidden sm:block relative max-w-4xl mx-auto">
+          {/* Vertical Line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
+
+          {/* Experience Items */}
+          {experiences.map((exp, index) => {
+            const isEven = index % 2 === 0
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`relative flex items-start mb-16 ${isEven ? "flex-row" : "flex-row-reverse"
+                  }`}
+              >
+                {/* Dot */}
+                <div className="absolute left-1/2 -translate-x-1/2 z-10">
+                  <div className="w-3 h-3 rounded-full bg-white" />
+                </div>
+
+                {/* Card - Flat glass, no gradient */}
+                <div className={`flex-1 ${isEven ? "pr-12 text-right" : "pl-12 text-left"}`}>
+                  <div
+                    className="p-5 sm:p-6 rounded-2xl 
+                      bg-white/[0.03] backdrop-blur-xl
+                      border border-white/[0.08]
+                      hover:bg-white/[0.05] hover:border-white/[0.12]
+                      transition-all duration-300"
                   >
-                    {/* Image */}
-                    {exp.image && (
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src={exp.image}
-                          alt={exp.company}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                        {exp.type && (
-                          <Badge className="absolute top-4 right-4 bg-blue-500/80 text-white border-none">
-                            {exp.type}
-                          </Badge>
-                        )}
-                      </div>
+                    {/* Type */}
+                    {exp.type && (
+                      <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest">
+                        {exp.type}
+                      </span>
                     )}
 
-                    {/* Content */}
-                    <div className="p-6">
-                      <div className="flex items-start justify-between gap-2 mb-3">
-                        <div>
-                          <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
-                          <p className="text-blue-400 font-medium">{exp.company}</p>
-                        </div>
-                      </div>
+                    {/* Title & Company */}
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mt-1">
+                      {exp.title}
+                    </h3>
+                    <p className="text-white/50 text-sm sm:text-base">{exp.company}</p>
 
-                      <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-white/60">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {exp.period}
+                    {/* Meta */}
+                    <div className={`flex flex-wrap items-center gap-4 mt-3 text-xs text-white/30 ${isEven ? "justify-end" : "justify-start"}`}>
+                      <span className="flex items-center gap-1.5">
+                        <Calendar className="w-3 h-3" />
+                        {exp.period}
+                      </span>
+                      {exp.location && (
+                        <span className="flex items-center gap-1.5">
+                          <MapPin className="w-3 h-3" />
+                          {exp.location}
                         </span>
-                        {exp.location && (
-                          <span className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
-                            {exp.location}
-                          </span>
-                        )}
-                      </div>
+                      )}
+                    </div>
 
-                      <ul className="space-y-2 mb-4">
-                        {exp.points.map((point, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-white/70">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0" />
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
+                    {/* Points */}
+                    <ul className={`space-y-2 mt-4 ${isEven ? "text-right" : "text-left"}`}>
+                      {exp.points.map((point, i) => (
+                        <li key={i} className={`flex items-start gap-2 text-sm text-white/50 ${isEven ? "flex-row-reverse" : ""}`}>
+                          <span className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                      {exp.linkedinPost && (
+                    {/* Tech Stack */}
+                    <div className={`flex flex-wrap gap-2 mt-4 ${isEven ? "justify-end" : "justify-start"}`}>
+                      {exp.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 text-[11px] font-medium rounded-full 
+                            bg-white/[0.03] text-white/50 border border-white/[0.06]
+                            hover:bg-white/[0.06] hover:text-white/70 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Link */}
+                    {exp.linkedinPost && (
+                      <div className={`mt-4 ${isEven ? "text-right" : "text-left"}`}>
                         <a
                           href={exp.linkedinPost}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/80 bg-[#0A66C2]/20 hover:bg-[#0A66C2]/30 border border-[#0A66C2]/40 rounded-lg transition-all hover:scale-[1.02]"
+                          className="inline-flex items-center gap-1.5 text-xs text-white/30 hover:text-white transition-colors"
                         >
-                          <Linkedin className="w-4 h-4" />
-                          View LinkedIn Post
+                          <Linkedin className="w-3.5 h-3.5" />
+                          View Post
                           <ExternalLink className="w-3 h-3" />
                         </a>
-                      )}
-                    </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-4 bg-white/10 border-white/20 text-white hover:bg-white/20" />
-            <CarouselNext className="hidden md:flex -right-4 bg-white/10 border-white/20 text-white hover:bg-white/20" />
-          </Carousel>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Empty space */}
+                <div className="flex-1" />
+              </motion.div>
+            )
+          })}
         </div>
 
-        {/* Activities Section */}
+        {/* Activities */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24 mb-12"
+          className="mt-24 sm:mt-32 mb-8 sm:mb-12 text-center"
         >
-          <Badge className="mb-4 bg-purple-500/20 text-purple-300 border-purple-500/30 hover:bg-purple-500/30">
-            Activities
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <p className="text-white/30 text-sm font-mono mb-3">activities</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
             Beyond the Code
           </h2>
         </motion.div>
 
-        {/* Activities Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* Mobile: Horizontal Scroll Snap */}
+        <div className="md:hidden -mx-4 px-4">
+          {/* Swipe tip */}
+          <p className="text-white/20 text-xs text-center mb-4 flex items-center justify-center gap-2">
+            <span>←</span>
+            <span>Swipe to explore</span>
+            <span>→</span>
+          </p>
+
+          <div
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {activities.map((activity, index) => (
+              <motion.div
+                key={activity.title}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="flex-shrink-0 w-[80vw] snap-center"
+              >
+                <div
+                  className="p-5 rounded-2xl h-full
+                    bg-white/[0.03] backdrop-blur-xl
+                    border border-white/[0.08]"
+                >
+                  {/* Icon */}
+                  <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mb-4">
+                    {activity.icon === "award" ? (
+                      <Award className="w-5 h-5 text-white/50" />
+                    ) : (
+                      <Briefcase className="w-5 h-5 text-white/50" />
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-base font-semibold text-white mb-2">
+                    {activity.title}
+                  </h3>
+                  <p className="text-sm text-white/40 leading-relaxed mb-4">
+                    {activity.description}
+                  </p>
+
+                  {/* Link */}
+                  {activity.linkedinPost && (
+                    <a
+                      href={activity.linkedinPost}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-white/30"
+                    >
+                      <Linkedin className="w-3.5 h-3.5" />
+                      View Post
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Grid */}
+        <div className="hidden md:grid grid-cols-3 gap-5 max-w-4xl mx-auto">
           {activities.map((activity, index) => (
             <motion.div
               key={activity.title}
@@ -254,25 +415,38 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md hover:border-white/20 transition-all group"
+              className="p-5 sm:p-6 rounded-2xl 
+                bg-white/[0.03] backdrop-blur-xl
+                border border-white/[0.08]
+                hover:bg-white/[0.05] hover:border-white/[0.12]
+                transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              {/* Icon */}
+              <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mb-4">
                 {activity.icon === "award" ? (
-                  <Award className="w-6 h-6 text-purple-400" />
+                  <Award className="w-5 h-5 text-white/50" />
                 ) : (
-                  <Briefcase className="w-6 h-6 text-blue-400" />
+                  <Briefcase className="w-5 h-5 text-white/50" />
                 )}
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{activity.title}</h3>
-              <p className="text-sm text-white/60 mb-4">{activity.description}</p>
+
+              {/* Content */}
+              <h3 className="text-base font-semibold text-white mb-2">
+                {activity.title}
+              </h3>
+              <p className="text-sm text-white/40 leading-relaxed mb-4">
+                {activity.description}
+              </p>
+
+              {/* Link */}
               {activity.linkedinPost && (
                 <a
                   href={activity.linkedinPost}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs text-white/30 hover:text-white transition-colors"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <Linkedin className="w-3.5 h-3.5" />
                   View Post
                   <ExternalLink className="w-3 h-3" />
                 </a>
