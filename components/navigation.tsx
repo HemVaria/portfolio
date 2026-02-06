@@ -185,19 +185,6 @@ export default function Navigation() {
                         <span className="hidden lg:inline">Resume</span>
                     </motion.a>
 
-                    {/* Buy Me a Coffee Button */}
-                    <motion.a
-                        href="https://www.buymeacoffee.com/hehehem"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2.5 text-sm bg-[#FFDD00] text-black font-medium transition-colors rounded-full shadow-2xl shadow-black/50 hover:shadow-[#FFDD00]/30"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <Coffee className="size-4" />
-                        <span className="hidden lg:inline">Buy me a coffee</span>
-                    </motion.a>
-
                     {/* Contact Button */}
                     <motion.a
                         href="#contact"
@@ -206,6 +193,19 @@ export default function Navigation() {
                         whileTap={{ scale: 0.95 }}
                     >
                         Contact
+                    </motion.a>
+
+                    {/* Buy Me a Coffee Button */}
+                    <motion.a
+                        href="https://www.buymeacoffee.com/hehehem"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2.5 text-sm bg-black/80 backdrop-blur-xl text-white/70 hover:text-white transition-colors rounded-full border border-white/10 shadow-2xl shadow-black/50"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <Coffee className="size-4" />
+                        <span className="hidden lg:inline">Support</span>
                     </motion.a>
 
                     {/* Menu Button - Desktop */}
