@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
-import { Download, X, Home, Briefcase, Code, User, Mail, Layers } from "lucide-react"
+import { Download, X, Home, Briefcase, Code, User, Mail, Layers, Coffee } from "lucide-react"
 
 const navLinks = [
     { label: "Works", href: "#projects", icon: Layers },
@@ -183,6 +183,19 @@ export default function Navigation() {
                     >
                         <Download className="size-4" />
                         <span className="hidden lg:inline">Resume</span>
+                    </motion.a>
+
+                    {/* Buy Me a Coffee Button */}
+                    <motion.a
+                        href="https://www.buymeacoffee.com/hehehem"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2.5 text-sm bg-[#FFDD00] text-black font-medium transition-colors rounded-full shadow-2xl shadow-black/50 hover:shadow-[#FFDD00]/30"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <Coffee className="size-4" />
+                        <span className="hidden lg:inline">Buy me a coffee</span>
                     </motion.a>
 
                     {/* Contact Button */}
