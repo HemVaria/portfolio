@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { Send, Calendar } from "lucide-react"
 import Image from "next/image"
 import { getCalApi } from "@calcom/embed-react"
+import BuyMeCoffee from "./buy-me-coffee"
 
 // Twitter/X Card Component
 function TwitterCard({
@@ -278,6 +279,12 @@ Sent from portfolio`
                   30 Min Call
                 </button>
               </div>
+            </div>
+
+            {/* Support My Work - Buy Me a Coffee */}
+            <div className="pt-4 border-t border-black/10">
+              <span className="text-xs text-black/40 uppercase tracking-wider block mb-3">Support My Work</span>
+              <BuyMeCoffee />
             </div>
           </motion.div>
         </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ArrowUp } from "lucide-react"
+import BuyMeCoffee from "./buy-me-coffee"
 
 const menuLinks = [
   { label: "Home", href: "#" },
@@ -78,6 +79,9 @@ export default function Footer() {
                 </a>
               ))}
             </nav>
+            <div className="mt-4">
+              <BuyMeCoffee variant="compact" />
+            </div>
           </div>
 
           {/* Local Time */}
