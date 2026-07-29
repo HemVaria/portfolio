@@ -23,6 +23,18 @@ interface ActivityItem {
 
 const experiences: ExperienceItem[] = [
   {
+    title: "Software Engineer Trainee",
+    company: "Promact Global",
+    type: "Trainee",
+    period: "05/2026 — Present",
+    points: [
+      "Migrated and optimized multiple production websites on Cloudflare",
+      "Built e-commerce, performance marketing, and marketing automation using Cloudflare Cron Workers and GitHub Actions",
+      "Set up multiple MCP servers and developed a broad full-stack and Gen AI skill set across several live projects",
+    ],
+    techStack: ["Cloudflare", "GitHub Actions", "MCP", "Next.js", "Gen AI"],
+  },
+  {
     title: "Full-stack Developer + Gen AI",
     company: "What an Aldea",
     type: "Internship",
@@ -37,20 +49,8 @@ const experiences: ExperienceItem[] = [
     techStack: ["Next.js", "Node.js", "n8n", "Gemini AI", "Supabase"],
   },
   {
-    title: "Full-Stack Developer + Gen AI",
-    company: "CodeBucks",
-    type: "Internship",
-    period: "2026",
-    points: [
-      "Built React/Next.js dashboards and components with optimized performance and UX",
-      "Implemented AI-driven agentic workflows with third-party API integrations",
-      "Connected backend services for end-to-end feature delivery",
-    ],
-    techStack: ["React", "Next.js", "TypeScript", "REST APIs", "Tailwind CSS"],
-  },
-  {
     title: "Freelance Web Developer",
-    company: "Fiverr, Upwork, Unstop",
+    company: "Fiverr, Upwork, Unstop, Personal Connections",
     period: "04/2025 — Present",
     points: [
       "Built scalable full-stack apps using Node.js, Supabase, and Firebase",
@@ -58,17 +58,6 @@ const experiences: ExperienceItem[] = [
       "Enhanced performance with robust authentication and cloud optimization",
     ],
     techStack: ["Node.js", "Supabase", "Firebase", "GSAP", "Three.js"],
-  },
-  {
-    title: "Freelance Web Designer",
-    company: "Fiverr, Upwork, Unstop",
-    period: "02/2024 — Present",
-    points: [
-      "Built 15+ responsive websites in Next.js/React",
-      "Designed with Figma UI/UX and Canva assets",
-      "Delivered client projects on Fiverr/Upwork",
-    ],
-    techStack: ["Figma", "Next.js", "React", "Tailwind CSS", "Canva"],
   },
   {
     title: "AI/ML Developer",

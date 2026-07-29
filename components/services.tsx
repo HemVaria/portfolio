@@ -6,35 +6,46 @@ import { motion, AnimatePresence } from "framer-motion"
 const services = [
   {
     number: "(01)",
-    title: "Full-Stack Development",
+    title: "Full-Stack Product Engineering",
     description:
-      "From frontend interactions to backend APIs, I build complete web solutions. I work with modern stacks to deliver apps that are scalable, maintainable, and ready for real-world users.",
+      "I ship production systems end to end — not just screens. Recent work spans a GST-compliant invoicing SaaS, an agency management platform with multi-level approval flows and role-based access across 12 roles, and a real estate platform featured at PropTech Connect Dubai 2026.",
     skills: [
-      { num: "01", text: "React, Node.js, Express.js" },
-      { num: "02", text: "REST APIs, Firebase, Docker" },
-      { num: "03", text: "Git, GitHub, Postman" },
+      { num: "01", text: "Next.js, React, Node.js, Express" },
+      { num: "02", text: "PostgreSQL, Prisma, Supabase, Firebase" },
+      { num: "03", text: "Astro, Strapi, Cloudflare D1 & KV" },
     ],
   },
   {
     number: "(02)",
-    title: "UI/UX & Frontend",
+    title: "Gen AI & Agentic Systems",
     description:
-      "Design is more than looks — it's about clarity and connection. I design and develop clean, responsive interfaces that feel intuitive across devices. My focus is on clarity, accessibility, and seamless user experiences.",
+      "I build with AI as infrastructure, not a feature bolt-on. That means multimodal pipelines, agentic workflows, and developer tooling — including a published npm CLI that audits and scores AI agent configs, and MCP servers wired into live production projects.",
     skills: [
-      { num: "01", text: "Next.js, TailwindCSS, GSAP" },
-      { num: "02", text: "Figma to Code" },
-      { num: "03", text: "HTML, CSS, JavaScript" },
+      { num: "01", text: "Agentic AI, MCP Servers, Claude Code" },
+      { num: "02", text: "Whisper, YOLOv8, BLIP, OpenCV" },
+      { num: "03", text: "Hugging Face, OpenRouter, TensorFlow" },
     ],
   },
   {
     number: "(03)",
-    title: "Optimization",
+    title: "Automation & Workflow Engineering",
     description:
-      "Beyond handling data, I'm driven by the challenge of turning complex raw inputs into reliable, usable systems. I enjoy designing pipelines that power insights and apply core CS principles to build for scale, speed, and stability.",
+      "I replace manual, repetitive operations with systems that run themselves. I design n8n and Gen AI pipelines for marketing automation, content generation, and image processing — plus scheduled jobs that keep everything running without anyone touching it.",
     skills: [
-      { num: "01", text: "Data Structures & Algorithms" },
-      { num: "02", text: "DBMS, OOP, OS Fundamentals" },
-      { num: "03", text: "Data Pipelines, ETL, and Scalability" },
+      { num: "01", text: "n8n, Cloudflare Cron Workers" },
+      { num: "02", text: "GitHub Actions, CI/CD Pipelines" },
+      { num: "03", text: "Marketing & Performance Automation" },
+    ],
+  },
+  {
+    number: "(04)",
+    title: "Edge Performance & Cloud",
+    description:
+      "Fast isn't a nice-to-have, it's the product. I migrate and optimize production sites onto Cloudflare's edge, tune Core Web Vitals, and architect deployments that stay quick and cheap under real traffic.",
+    skills: [
+      { num: "01", text: "Cloudflare Migrations & Edge Deploys" },
+      { num: "02", text: "Core Web Vitals & Performance Tuning" },
+      { num: "03", text: "Vercel, Railway, Google Cloud" },
     ],
   },
 ]
@@ -68,9 +79,9 @@ export default function Services() {
             (SERVICES)
           </div>
           <p className="text-base sm:text-lg md:text-xl text-[#9A9A9A] leading-relaxed max-w-2xl">
-            I specialize in building full-stack web applications that are fast, reliable, and user-friendly.
-            With a solid foundation in both frontend and backend technologies, I help bring ideas to life
-            whether it&apos;s for a business, a startup, or a product team.
+            I build and ship full-stack products with AI and automation baked in — from GST invoicing SaaS
+            and agency management platforms to Gen AI tooling and edge-deployed sites. Currently a Software
+            Engineer at Promact Global, working across live production systems.
           </p>
         </motion.div>
 

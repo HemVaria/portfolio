@@ -6,6 +6,8 @@ import Services from "@/components/services"
 import Projects from "@/components/projects"
 import Skills from "@/components/skills"
 import Experience from "@/components/experience"
+import Education from "@/components/education"
+import Certifications from "@/components/certifications"
 import About from "@/components/about"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
@@ -37,6 +39,16 @@ export default function HomePage() {
       {/* Experience Section */}
       <section id="experience">
         <Experience />
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="bg-black">
+        <Education />
+      </section>
+
+      {/* Certifications Section */}
+      <section id="certifications" className="bg-black">
+        <Certifications />
       </section>
 
       {/* About Section */}

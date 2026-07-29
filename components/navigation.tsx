@@ -18,7 +18,8 @@ const mobileNavLinks = [
     { label: "Services", href: "#services", index: "04", icon: Briefcase },
     { label: "Skills", href: "#skills", index: "05", icon: Code },
     { label: "Experience", href: "#experience", index: "06", icon: Briefcase },
-    { label: "Contact", href: "#contact", index: "07", icon: Mail },
+    { label: "Blog", href: "/blog", index: "07", icon: Layers },
+    { label: "Contact", href: "#contact", index: "08", icon: Mail },
 ]
 
 // Magnetic button component for smooth hover effect
@@ -142,7 +143,7 @@ export default function Navigation() {
                 className="fixed top-4 left-0 right-0 z-[100] px-4"
                 initial={{ y: 0, opacity: 1 }}
                 animate={{ y: hidden && !menuOpen ? -100 : 0, opacity: hidden && !menuOpen ? 0 : 1 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
                 {/* Desktop: Centered navigation */}
                 <div className="hidden md:flex justify-center items-center gap-2">
@@ -267,7 +268,7 @@ export default function Navigation() {
                 className="fixed bottom-3 left-3 right-3 z-[99] md:hidden"
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: hidden ? 100 : 0, opacity: hidden ? 0 : 1 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
                 <div className="flex items-center justify-evenly bg-black/90 backdrop-blur-xl rounded-2xl border border-white/10 px-1 py-2.5 shadow-xl shadow-black/50">
                     {[
@@ -283,7 +284,7 @@ export default function Navigation() {
                             <a
                                 key={item.label}
                                 href={item.href}
-                                className={`flex flex-col items-center justify-center gap-0.5 min-w-[48px] px-2 py-1.5 rounded-xl transition-all ${isActive
+                                className={`flex flex-col items-center justify-center gap-0.5 min-w-[48px] px-2 py-1.5 rounded-xl transition-all duration-300 ease-out ${isActive
                                     ? "text-black bg-white"
                                     : "text-white/50 hover:text-white"
                                     }`}

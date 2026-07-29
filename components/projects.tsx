@@ -13,9 +13,51 @@ type Project = {
   image?: string
   repo?: string
   demo?: string
+  demoColdStart?: boolean
+  status?: "wip"
 }
 
 const projects: Project[] = [
+  {
+    title: "AICEK",
+    category: "AI Agent Config Optimizer",
+    year: "2026",
+    description: "TypeScript CLI that audits and scores Claude Code / Cursor configs (0–100) and recommends token-saving fixes. Published on npm.",
+    image: "/images/projects/aicek.png",
+    repo: "https://github.com/HemVaria/aicek",
+  },
+  {
+    title: "RevTrack",
+    category: "GST Invoicing SaaS",
+    year: "2026",
+    description: "GST-compliant invoicing, expense tracking, inventory, and revenue management for Indian SMBs — built as part of a small team. Built with Next.js, with GSTR-ready exports and role-based access control.",
+    image: "/images/projects/revtrack.png",
+    demo: "https://revtrack.in",
+  },
+  {
+    title: "Text Switch",
+    category: "Rust Desktop App",
+    year: "2026",
+    description: "Text expander + AI rewriter for Windows. Type a keyword shortcut and a hotkey expands it into a full saved template — great for prompts and repeated snippets. Also rewrites drafted text on demand (tone, grammar, style) using a Gemini-powered pipeline with pre-set shortcuts.",
+    image: "/images/projects/text-switch.png",
+    status: "wip",
+  },
+  {
+    title: "AI Video Editing & Captioning Tool",
+    category: "AI/ML Development",
+    year: "2025",
+    description: "Extended Remotion to build an AI-powered programmatic video editing tool with code-driven React compositions, plus a Gradio-based video analysis tool using Whisper, BLIP, and YOLOv8 for multi-layered video understanding and captioning.",
+    image: "/images/projects/ai-video-engine.png",
+    repo: "https://github.com/HemVaria/AI-Multimodal-Video-Captioning-Tool",
+  },
+  {
+    title: "IMS",
+    category: "Agency Management System",
+    year: "2026",
+    description: "Full internal management platform for a creative agency — client onboarding, Kanban job pipeline, multi-level approvals, GST invoicing, and HR & workload tracking across 12 role types. Built with Next.js, Express, Prisma, and PostgreSQL.",
+    image: "/images/projects/agency-management-ims.png",
+    repo: "https://github.com/HemVaria/Ims",
+  },
   {
     title: "Ride Rescue",
     category: "Emergency Services App",
@@ -24,40 +66,6 @@ const projects: Project[] = [
     image: "https://img.youtube.com/vi/fXZ9sKJBNa8/maxresdefault.jpg",
     repo: "https://github.com/HemVaria/Ride-rescue-updated",
     demo: "https://www.youtube.com/watch?v=fXZ9sKJBNa8",
-  },
-  {
-    title: "Nano-Craft AI",
-    category: "AI Creative Studio",
-    year: "2025",
-    description: "Multi-modal AI creative suite powered by Google Gemini. Features text-to-image, inpainting, outpainting, style transfer, and video generation.",
-    image: "https://img.youtube.com/vi/25v6pZCIDno/maxresdefault.jpg",
-    repo: "https://github.com/HemVaria/nano-craft-ai",
-    demo: "https://www.youtube.com/watch?v=25v6pZCIDno",
-  },
-  {
-    title: "AI Video Captioning",
-    category: "AI/ML Development",
-    year: "2025",
-    description: "Multimodal video captioning tool using Whisper, BLIP, and YOLOv8. Generates accurate captions by analyzing video frames and audio together.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-    repo: "https://github.com/HemVaria/AI-Multimodal-Video-Captioning-Tool",
-  },
-  {
-    title: "EcoGen AI",
-    category: "Environmental Tech",
-    year: "2025",
-    description: "Smart waste management app with AI classification using Gemini 2.5 Flash. Features QR bin scanning, gamification, and pickup scheduling.",
-    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&h=600&fit=crop",
-    repo: "https://github.com/HemVaria/ecogenai",
-  },
-  {
-    title: "Instasphere",
-    category: "Social Media Platform",
-    year: "2024",
-    description: "Image-first social network with real-time interactions. Features photo/video uploads, likes, comments, follows, and personalized feeds.",
-    image: "https://img.youtube.com/vi/Md2WGlUOvKs/maxresdefault.jpg",
-    repo: "https://github.com/HemVaria/instasphere",
-    demo: "https://www.youtube.com/watch?v=Md2WGlUOvKs",
   },
 ]
 
@@ -104,9 +112,12 @@ export default function Projects() {
             >
               <a
                 href={project.demo || project.repo}
-                target="_blank"
+                target={project.demo || project.repo ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="block py-8 md:py-12"
+                className={`block py-8 md:py-12 ${!project.demo && !project.repo ? "cursor-default" : ""}`}
+                onClick={(e) => {
+                  if (!project.demo && !project.repo) e.preventDefault()
+                }}
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-16 items-center">
                   {/* Left: Large Number */}
@@ -156,7 +167,9 @@ export default function Projects() {
                         transition={{ duration: 0.3 }}
                       >
                         <span className="flex items-center gap-2 text-white font-medium px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
-                          {project.demo?.includes('youtube') ? (
+                          {!project.demo && !project.repo ? (
+                            "Coming Soon"
+                          ) : project.demo?.includes('youtube') ? (
                             <>
                               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M8 5v14l11-7z" />
@@ -203,12 +216,17 @@ export default function Projects() {
 
                         {/* Tags & Links */}
                         <div className="flex items-center gap-2 flex-wrap mt-1 sm:mt-0 sm:shrink-0 sm:justify-end">
+                          {project.status === "wip" && (
+                            <span className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs border border-amber-400/40 bg-amber-400/10 rounded-full text-amber-300 font-medium">
+                              In Progress
+                            </span>
+                          )}
                           {project.repo && (
                             <a
                               href={project.repo}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 text-[10px] sm:text-xs border border-white/20 rounded-full text-white/60 hover:bg-white hover:text-black transition-colors"
+                              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 text-[10px] sm:text-xs border border-white/20 rounded-full text-white/60 hover:bg-white hover:text-black transition-colors duration-300 ease-out hover:scale-105 active:scale-95"
                               onClick={(e) => e.stopPropagation()}
                             >
                               <Github className="size-3" />
@@ -225,6 +243,13 @@ export default function Projects() {
                       <p className="text-xs sm:text-sm text-white/50 leading-relaxed">
                         {project.description}
                       </p>
+
+                      {/* Cold-start note for live demos on free hosting tiers */}
+                      {project.demoColdStart && (
+                        <p className="text-[10px] sm:text-xs text-white/30 italic">
+                          Live demo may take a few seconds to wake up (free-tier hosting)
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

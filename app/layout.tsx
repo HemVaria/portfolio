@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono, Newsreader, Poppins } from "next/font/google"
 import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
@@ -22,11 +22,12 @@ export const metadata: Metadata = {
   title: "Hem Varia — Full‑stack & AI/ML Developer",
   description: "Portfolio of Hem Varia — projects, skills, certifications, and contact.",
   generator: "next.js",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    viewportFit: "cover",
-  },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 }
 
 export default function RootLayout({

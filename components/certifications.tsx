@@ -1,4 +1,5 @@
 const certifications = [
+  { title: "AI & Claude Development Courses", issuer: "Anthropic" },
   { title: "Foundations of User Experience (UX) Design", issuer: "Google" },
   { title: "Prompting Essentials", issuer: "Google" },
   { title: "Machine Learning with TensorFlow", issuer: "Infosys Springboard" },
