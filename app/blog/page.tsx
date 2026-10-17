@@ -1,73 +1,45 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { ArrowLeft, Mail } from "lucide-react"
 import Link from "next/link"
+import JsonLd from "@/components/json-ld"
+import { bodyL, dL, focus, label } from "@/components/story/tokens"
+import { posts } from "@/lib/posts"
+import { breadcrumbs } from "@/lib/site"
 
-const topics = [
-  "Full-stack development (Next.js, Node.js, Cloudflare)",
-  "AI/ML engineering & agentic workflows",
-  "Building & shipping side projects",
-  "Lessons from real client work",
-]
+const fmt = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
 
 export default function BlogPage() {
   return (
-    <main className="relative min-h-screen bg-black flex items-center justify-center px-4 sm:px-6 py-24">
-      <motion.div
-        className="max-w-2xl w-full text-center"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <p className="text-white/30 text-sm font-mono uppercase tracking-widest mb-4">(BLOG)</p>
-
-        <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-bold text-white leading-[0.95] tracking-tight mb-6">
-          Coming Soon
-        </h1>
-
-        <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-10">
-          I&apos;m writing up notes on what I&apos;m building and learning. First posts are on the way — here&apos;s
-          what to expect:
-        </p>
-
-        <ul className="flex flex-col gap-3 mb-12 max-w-md mx-auto text-left">
-          {topics.map((topic, i) => (
-            <motion.li
-              key={topic}
-              className="flex items-start gap-3 text-white/70 text-sm sm:text-base"
-              initial={{ opacity: 0, x: -15 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 + i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+    <main className="px-5 pt-28 pb-24 md:px-12 md:pt-36">
+      <nav aria-label="Breadcrumb" className={`${label} mb-10 text-[#5E5B55]`}>
+        <Link href="/" className="hover:text-[#2B3BFF]">Home</Link> <span aria-hidden>/</span> <span className="text-[#111]">Blog</span>
+      </nav>
+      <h1 className={dL}>Build notes.</h1>
+      <p className={`${bodyL} mt-5 max-w-[44ch] text-[#5E5B55]`}>
+        How I build AI automation, written up after the work ships. Each post links to its{" "}
+        <Link href="/work" className="text-[#111] underline underline-offset-4 hover:text-[#2B3BFF]">
+          case study
+        </Link>
+        .
+      </p>
+      <ul className="mt-14 grid gap-5 md:mt-20 md:grid-cols-3">
+        {posts.map((p) => (
+          <li key={p.slug}>
+            <Link
+              href={`/blog/${p.slug}`}
+              className={`${focus} group flex h-full min-h-[300px] flex-col rounded-2xl bg-[#FBFAF7] p-6 ring-1 ring-[#111]/10 transition-shadow hover:ring-[#2B3BFF]`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-white/40 mt-2 shrink-0" />
-              <span>{topic}</span>
-            </motion.li>
-          ))}
-        </ul>
-
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors duration-300"
-          >
-            <ArrowLeft className="size-4" />
-            Back to Home
-          </Link>
-          <a
-            href="mailto:hemvaria007@gmail.com?subject=Notify%20me%20when%20the%20blog%20launches"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/70 hover:text-white hover:border-white/40 transition-colors duration-300"
-          >
-            <Mail className="size-4" />
-            Get notified
-          </a>
-        </motion.div>
-      </motion.div>
+              <time dateTime={p.date} className={`${label} text-[#5E5B55]`}>
+                {fmt(p.date)}
+              </time>
+              <h2 className="mt-4 text-[22px] leading-snug font-semibold tracking-[-0.02em] transition-colors group-hover:text-[#2B3BFF]">
+                {p.title}
+              </h2>
+              <p className="mt-3 text-[15px] leading-normal text-[#5E5B55]">{p.description}</p>
+              <span className={`${label} mt-auto pt-6`}>Read →</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <JsonLd data={breadcrumbs([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])} />
     </main>
   )
 }

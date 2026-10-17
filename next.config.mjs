@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Static export for Cloudflare (Workers static assets or Pages); output goes to ./out
+  output: 'export',
   typescript: {
     ignoreBuildErrors: true,
   },

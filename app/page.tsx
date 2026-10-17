@@ -1,68 +1,23 @@
-"use client"
+import Story from "@/components/story/story"
+import JsonLd from "@/components/json-ld"
+import { SITE_URL } from "@/lib/site"
 
-import Navigation from "@/components/navigation"
-import Hero from "@/components/hero"
-import Services from "@/components/services"
-import Projects from "@/components/projects"
-import Skills from "@/components/skills"
-import Experience from "@/components/experience"
-import Education from "@/components/education"
-import Certifications from "@/components/certifications"
-import About from "@/components/about"
-import Contact from "@/components/contact"
-import Footer from "@/components/footer"
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Hem Varia",
+  url: SITE_URL,
+  jobTitle: "AI Automation Engineer",
+  address: { "@type": "PostalAddress", addressLocality: "Vadodara", addressCountry: "IN" },
+  knowsAbout: ["AI automation", "Claude Code", "Cloudflare Workers", "Next.js", "Meta Marketing API"],
+  sameAs: ["https://linkedin.com/in/hem-varia", "https://github.com/HemVaria", "https://instagram.com/hehehem.exe"],
+}
 
 export default function HomePage() {
   return (
-    <main className="relative">
-      {/* Fixed Navigation */}
-      <Navigation />
-
-      {/* Hero Section */}
-      <Hero />
-
-      {/* Services Section */}
-      <section id="services">
-        <Services />
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects">
-        <Projects />
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills">
-        <Skills />
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience">
-        <Experience />
-      </section>
-
-      {/* Education Section */}
-      <section id="education" className="bg-black">
-        <Education />
-      </section>
-
-      {/* Certifications Section */}
-      <section id="certifications" className="bg-black">
-        <Certifications />
-      </section>
-
-      {/* About Section */}
-      <section id="about">
-        <About />
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact">
-        <Contact />
-      </section>
-
-      {/* Footer */}
-      <Footer />
-    </main>
+    <>
+      <Story />
+      <JsonLd data={person} />
+    </>
   )
 }
