@@ -1,5 +1,5 @@
-// Set NEXT_PUBLIC_SITE_URL to the final Cloudflare domain at build time.
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "")
+// Override with NEXT_PUBLIC_SITE_URL when a custom domain is added.
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio.hemvaria007.workers.dev").replace(/\/$/, "")
 export const SITE_NAME = "Hem Varia"
 export const CAL_LINK = "hehehem-s8zjfl/30min"
 
