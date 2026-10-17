@@ -1,6 +1,6 @@
 // Cloudflare Workers static assets. Build with `pnpm build` (static export to ./out), then `npx wrangler deploy`.
 {
-  "name": "portfolio",
+  "name": "hello",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./out",
