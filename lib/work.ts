@@ -301,8 +301,8 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Case study: RevTrack, a team-built Next.js SaaS for GST-compliant invoicing, expenses, inventory and revenue with GSTR-ready exports.",
     summary:
-      "A team-built SaaS for Indian SMBs that handles GST-compliant invoicing, expenses, inventory and revenue, live at revtrack.in.",
-    card: "GST-compliant invoicing, expenses and inventory for Indian SMBs, live at revtrack.in.",
+      "A team-built SaaS for Indian SMBs that handles GST-compliant invoicing, expenses, inventory and revenue.",
+    card: "GST-compliant invoicing, expenses and inventory for Indian SMBs.",
     status: "live",
     role: "Team build",
     stack: ["Next.js", "GST", "RBAC"],
@@ -332,7 +332,7 @@ export const caseStudies: CaseStudy[] = [
         body: "Role-based access control means an owner, an accountant and staff can each see only what they need.",
       },
     ],
-    result: ["RevTrack is live at revtrack.in."],
+    result: ["RevTrack is live."],
     next: ["Add more export formats as filing needs change."],
     relatedWork: ["hr-automation-platform", "ecommerce-order-automation"],
   },
