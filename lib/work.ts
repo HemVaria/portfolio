@@ -338,31 +338,4 @@ export const caseStudies: CaseStudy[] = [
   },
 ]
 
-export const otherBuilds = [
-  {
-    title: "AICEK",
-    line: "TypeScript CLI on npm that scores Claude Code and Cursor configs from 0 to 100.",
-    href: "https://github.com/HemVaria/aicek",
-  },
-  {
-    title: "Text Switch",
-    line: "Rust desktop text expander. In development.",
-  },
-  {
-    title: "AI Video Editing and Captioning Tool",
-    line: "Programmatic video editing and multimodal captioning.",
-    href: "https://github.com/HemVaria/AI-Multimodal-Video-Captioning-Tool",
-  },
-  {
-    title: "Ride Rescue",
-    line: "Roadside assistance app connecting drivers with mechanics.",
-    href: "https://github.com/HemVaria/Ride-rescue-updated",
-  },
-  {
-    title: "IMS",
-    line: "Agency management system with 12 roles.",
-    href: "https://github.com/HemVaria/Ims",
-  },
-]
-
 export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug)

@@ -5,9 +5,9 @@ import gsap from "gsap"
 import { CalBookingButton } from "@/components/cal-booking"
 import { dL, dM, FINE, focus, label, Scramble, useMedia, usePrefersMotion } from "./kit"
 
-type Project = { title: string; impact: string; tag: string; image: string; href?: string; private?: boolean }
+type Project = { title: string; impact: string; tag: string; image: string; private?: boolean }
 
-// My projects (RevTrack is the one team build). One line each: the difference it makes, not how it works.
+// My projects. One line each: the difference it makes, not how it works. Every row opens the pitch, never a raw link.
 const projects: Project[] = [
   {
     title: "Performance Marketing Automation",
@@ -35,14 +35,13 @@ const projects: Project[] = [
     impact: "Scores AI coding setups from 0 to 100, with fixes that save tokens.",
     tag: "npm CLI",
     image: "/images/projects/thumbs/aicek.webp",
-    href: "https://github.com/HemVaria/aicek",
   },
   {
     title: "RevTrack",
     impact: "GST invoicing, expenses and revenue in one place for Indian small businesses.",
-    tag: "Live / team build",
+    tag: "Private / demo on request",
+    private: true,
     image: "/images/projects/thumbs/revtrack.webp",
-    href: "https://revtrack.in",
   },
   {
     title: "Text Switch",
@@ -55,14 +54,12 @@ const projects: Project[] = [
     impact: "Edits and captions video with code instead of a timeline.",
     tag: "Open source",
     image: "/images/projects/thumbs/ai-video-editor.webp",
-    href: "https://github.com/HemVaria/AI-Multimodal-Video-Captioning-Tool",
   },
   {
     title: "IMS",
     impact: "Runs a creative agency's clients, jobs, approvals and invoices from one system.",
     tag: "Web app",
     image: "/images/projects/thumbs/ims.webp",
-    href: "https://github.com/HemVaria/Ims",
   },
 ]
 
@@ -121,7 +118,7 @@ function Preview({ listRef, active }: { listRef: RefObject<HTMLUListElement | nu
 const PHONE = "918200487838"
 const EMAIL = "hemvaria007@gmail.com"
 
-// Private builds can't be shown publicly, so the row opens a short pitch with three ways to reach me.
+// Every project opens a short pitch with three ways to reach me. Private builds say why they aren't public.
 function Funnel({ project, onClose }: { project: Project; onClose: () => void }) {
   const panel = useRef<HTMLDivElement>(null)
   const motion = usePrefersMotion()
@@ -162,7 +159,7 @@ function Funnel({ project, onClose }: { project: Project; onClose: () => void })
         <img src={project.image} alt="" className="aspect-video w-full border-b border-[#111] object-cover" />
         <div className="p-5 md:p-8">
           <div className="flex items-start justify-between gap-4">
-            <p className={`${label} text-[#5E5B55]`}>Private build</p>
+            <p className={`${label} text-[#5E5B55]`}>{project.private ? "Private build" : project.tag}</p>
             <button type="button" onClick={onClose} className={`${label} ${focus} -mt-3 -mr-2 min-h-11 px-2`}>
               Close
             </button>
@@ -171,8 +168,9 @@ function Funnel({ project, onClose }: { project: Project; onClose: () => void })
             Want this for your team?
           </h3>
           <p className="mt-4 text-[15px] leading-normal text-[#5E5B55]">
-            {project.title} runs for real teams, so it isn&apos;t public. I can walk you through it and build one around
-            your workflow.
+            {project.private
+              ? `${project.title} runs for real teams, so it isn't public. I can walk you through it and build one around your workflow.`
+              : `I can walk you through ${project.title} and build something like it around your workflow.`}
           </p>
           <div className="mt-6 flex flex-col gap-2">
             <span onClickCapture={onClose}>
@@ -216,13 +214,11 @@ export default function WorkIndex() {
       <Scramble as="h2" text="Things I built." className={dL} />
       <ul ref={listRef} className="mt-10 md:mt-16">
         {projects.map((p, i) => {
-          const Tag = p.href ? "a" : p.private ? "button" : "div"
-          const ext = p.href?.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {}
-          const props = p.href ? { href: p.href, ...ext } : p.private ? { type: "button" as const, onClick: () => setPitch(p) } : {}
           return (
             <li key={p.title} onPointerEnter={() => setActive(i)} className="border-t border-[#111] last:border-b">
-              <Tag
-                {...props}
+              <button
+                type="button"
+                onClick={() => setPitch(p)}
                 className={`${focus} group flex w-full flex-col gap-3 py-6 text-left transition-colors active:bg-[#E2DED6] md:grid md:grid-cols-12 md:items-baseline md:gap-6 md:py-8`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -233,15 +229,11 @@ export default function WorkIndex() {
                   className={`${dM} block transition-transform duration-300 group-hover:translate-x-4 group-hover:text-[#2B3BFF] md:col-span-5`}
                 >
                   {p.title}
-                  {(p.href || p.private) && (
-                    <span className="ml-3 inline-block text-[0.6em] opacity-0 transition-opacity group-hover:opacity-100">
-                      {p.private ? "→" : "↗"}
-                    </span>
-                  )}
+                  <span className="ml-3 inline-block text-[0.6em] opacity-0 transition-opacity group-hover:opacity-100">→</span>
                 </span>
                 <span className="text-[15px] leading-normal text-[#5E5B55] md:col-span-5">{p.impact}</span>
                 <span className={`${label} md:col-span-2 md:text-right`}>{p.tag}</span>
-              </Tag>
+              </button>
             </li>
           )
         })}
