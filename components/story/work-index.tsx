@@ -5,7 +5,7 @@ import gsap from "gsap"
 import { CalBookingButton } from "@/components/cal-booking"
 import { dL, dM, FINE, focus, label, Scramble, useMedia, usePrefersMotion } from "./kit"
 
-type Project = { title: string; impact: string; tag: string; image: string; private?: boolean }
+type Project = { title: string; impact: string; tag: string; image: string; private?: boolean; repo?: string }
 
 // My projects. One line each: the difference it makes, not how it works. Every row opens the pitch, never a raw link.
 const projects: Project[] = [
@@ -35,6 +35,7 @@ const projects: Project[] = [
     impact: "Scores AI coding setups from 0 to 100, with fixes that save tokens.",
     tag: "npm CLI",
     image: "/images/projects/thumbs/aicek.webp",
+    repo: "https://github.com/HemVaria/aicek",
   },
   {
     title: "RevTrack",
@@ -54,12 +55,14 @@ const projects: Project[] = [
     impact: "Edits and captions video with code instead of a timeline.",
     tag: "Open source",
     image: "/images/projects/thumbs/ai-video-editor.webp",
+    repo: "https://github.com/HemVaria/AI-Multimodal-Video-Captioning-Tool",
   },
   {
     title: "IMS",
     impact: "Runs a creative agency's clients, jobs, approvals and invoices from one system.",
     tag: "Web app",
     image: "/images/projects/thumbs/ims.webp",
+    repo: "https://github.com/HemVaria/Ims",
   },
 ]
 
@@ -153,7 +156,7 @@ function Funnel({ project, onClose }: { project: Project; onClose: () => void })
         aria-modal="true"
         aria-labelledby="funnel-title"
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-[560px] border border-[#111] bg-[#F2F0EB] md:mx-5"
+        className="max-h-[100dvh] w-full max-w-[560px] overflow-y-auto overscroll-contain border border-[#111] bg-[#F2F0EB] md:mx-5"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={project.image} alt="" className="aspect-video w-full border-b border-[#111] object-cover" />
@@ -195,6 +198,11 @@ function Funnel({ project, onClose }: { project: Project; onClose: () => void })
             >
               Email me <span aria-hidden>→</span>
             </a>
+            {project.repo && (
+              <a href={project.repo} target="_blank" rel="noopener noreferrer" className={`${cta} hover:bg-[#111] hover:text-[#F2F0EB]`}>
+                View code on GitHub <span aria-hidden>↗</span>
+              </a>
+            )}
           </div>
         </div>
       </div>
